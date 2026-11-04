@@ -1,6 +1,4 @@
 
-index.php
-100%
 <?php
 // ==========================================
 // AULA 01: O CÓDIGO SPAGHETTI (Tudo misturado)
