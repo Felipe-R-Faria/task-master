@@ -11,15 +11,16 @@ class Task {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function save($title, $description, $dueDate) {
-        if (empty(trim($title)) || empty(trim($dueDate))) {
-            throw new Exception("Título e Data são obrigatórios.");
+    public function save($title, $description, $dueDate, $assignee) {
+        if (empty(trim($title)) || empty(trim($dueDate)) || empty(trim($assignee))) {
+            throw new Exception("Título, Data e Responsável são obrigatórios.");
         }
         
-        $stmt = $this->pdo->prepare("INSERT INTO tasks (title, description, due_date) VALUES (:title, :description, :due_date)");
+        $stmt = $this->pdo->prepare("INSERT INTO tasks (title, description, due_date, assignee) VALUES (:title, :description, :due_date, :assignee)");
         $stmt->bindValue(':title', $title);
         $stmt->bindValue(':description', $description);
         $stmt->bindValue(':due_date', $dueDate);
+        $stmt->bindValue(':assignee', $assignee);
         return $stmt->execute();
     }
 

@@ -13,7 +13,8 @@ class TaskController {
 
     public function create() {
         try {
-            $this->model->save($_POST['title'], $_POST['description'], $_POST['due_date']);
+            
+            $this->model->save($_POST['title'], $_POST['description'], $_POST['due_date'], $_POST['assignee']);
             header("Location: index.php");
         } catch (Exception $e) {
             $this->index($e->getMessage()); 

@@ -32,6 +32,7 @@
         <input type="text" name="title" placeholder="Título" required>
         <input type="text" name="description" placeholder="Descrição">
         <input type="date" name="due_date" required>
+        <input type="text" name="assignee" placeholder="Responsável" required>
         <button type="submit">Adicionar</button>
     </form>
 
