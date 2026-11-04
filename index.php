@@ -3,12 +3,12 @@
 // AULA 01: O CÓDIGO SPAGHETTI (Tudo misturado)
 // ==========================================
 
-// 1. CONEXÃO COM O BANCO DE DADOS E CRIAÇÃO DA TABELA
+
 $dbFile = __DIR__ . '/tasks.sqlite';
 $pdo = new PDO('sqlite:' . $dbFile);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// Tabela atualizada com os novos campos
+
 $pdo->exec("CREATE TABLE IF NOT EXISTS tasks (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
@@ -18,7 +18,7 @@ $pdo->exec("CREATE TABLE IF NOT EXISTS tasks (
     done INTEGER DEFAULT 0
 )");
 
-// 2. LÓGICA DE NEGÓCIO E CONTROLE DE REQUISIÇÕES MISTURADOS
+
 $error = '';
 
 // Criar nova tarefa
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['title'])) {
     $due_date = trim($_POST['due_date'] ?? '');
     $assignee = trim($_POST['assignee'] ?? '');
     
-    // Validação dos campos obrigatórios
+
     if (empty($title) || empty($due_date) || empty($assignee)) {
         $error = "Título, Data de Vencimento e Responsável são obrigatórios!";
     } else {
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['title'])) {
     }
 }
 
-// Concluir ou excluir tarefa
+
 if (isset($_GET['action']) && isset($_GET['id'])) {
     $id = (int) $_GET['id'];
     
