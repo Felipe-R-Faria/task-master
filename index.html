@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Master - MVVM Edition</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        .task-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .task-form input, 
+        .task-form textarea, 
+        .task-form button {
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .task-form textarea {
+            resize: vertical;
+            height: 60px;
+        }
+
+        .task-form button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .task-form button:hover {
+            background-color: #0056b3;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #eee;
+            margin: 20px 0;
+        }
+
+        #taskList {
+            list-style: none;
+            padding: 0;
+        }
+
+        .task-item {
+            background: #fdfdfd;
+            border: 1px solid #e1e1e1;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .task-info strong {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .task-info p {
+            margin: 5px 0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .task-info small {
+            color: #888;
+            font-size: 12px;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .delete-btn:hover {
+            background-color: #a71d2a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Task Master (MVVM)</h1>
+
+        <div class="task-form">
+            <input type="text" id="taskTitle" placeholder="Título da tarefa..." required>
+            <textarea id="taskDescription" placeholder="Descrição..."></textarea>
+            <input type="date" id="taskDueDate">
+            <button id="addBtn">Adicionar Tarefa</button>
+        </div>
+
+        <hr>
+
+        <ul id="taskList"></ul>
+    </div>
+
+    <script src="js/TaskViewModel.js"></script>
+</body>
+</html>
